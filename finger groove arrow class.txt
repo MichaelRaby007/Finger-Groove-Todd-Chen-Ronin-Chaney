@@ -1,0 +1,67 @@
+import javax.swing.ImageIcon;
+
+public class Arrow {
+
+	private int x;
+	private int y;
+	private int w;
+	private int h;
+	private int dx;
+	private ImageIcon upArrow, downArrow, leftArrow, rightArrow;
+	private ImageIcon background;
+	
+	
+	public Arrow()
+	{
+		x=200;
+		y=300;
+		dx=0;
+		h=50;
+		w=50;
+		upArrow = new ImageIcon("up.png");
+		downArrow = new ImageIcon("down.png");
+		leftArrow = new ImageIcon("left.png");
+		rightArrow = new ImageIcon("right.png");
+		background = new ImageIcon("disco.gif");
+	}
+	
+	public int getX() 
+	{
+		return x;
+	}
+	 
+	public int getY() 
+	{
+		return y;
+	}	
+
+	public int getH() 
+	{
+		return h;
+	}
+	 
+	public int getW() 
+	{
+		return w;
+	}	
+	
+	public void setX(int xV)
+	{
+		x += xV;
+	}
+	public void setY(int yV)
+	{
+		y += yV;
+	}
+	
+	public void move()
+	{
+		x+=dx;
+		
+	}
+	
+	public void setDx(int dxFromGame)
+	{
+		dx= dxFromGame;
+	}
+}

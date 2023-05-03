@@ -1,0 +1,118 @@
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage; 
+import java.awt.event.*; 
+import javax.swing.ImageIcon;
+import javax.sound.sampled.*;
+
+public class Game  extends JPanel implements Runnable, KeyListener{
+
+	
+	private BufferedImage back; 
+	private int key; 
+	private ImageIcon background;
+	private ImageIcon up;
+	private ImageIcon down;
+	private ImageIcon left;
+	private ImageIcon right;
+
+	
+	public Game() {
+		new Thread(this).start();	
+		this.addKeyListener(this);
+		key =-1; 
+		background = new ImageIcon("disco.gif");
+		up = new ImageIcon("up.png");
+		down = new ImageIcon("down.png");
+		left = new ImageIcon("left.png");
+		right = new ImageIcon("right.png");
+	}
+
+	
+	
+	public void run()
+	   {
+	   	try
+	   	{
+	   		while(true)
+	   		{
+	   		   Thread.currentThread().sleep(5);
+	            repaint();
+	         }
+	      }
+	   		catch(Exception e)
+	      {
+	      }
+	  	}
+	
+
+	
+	
+	
+	public void paint(Graphics g){
+		
+		Graphics2D twoDgraph = (Graphics2D) g; 
+		if( back ==null)
+			back=(BufferedImage)( (createImage(getWidth(), getHeight()))); 
+		
+
+		Graphics g2d = back.createGraphics();
+		
+		g2d.clearRect(0,0,getSize().width, getSize().height);
+		
+		g2d.setFont( new Font("Broadway", Font.BOLD, 50));
+		g2d.setColor(Color.WHITE);
+		g2d.drawImage(background.getImage(), 50, 50, 2000, 1800, this);
+		g2d.drawImage(up.getImage(), 80, 50, 2000, 1800, this);
+		g2d.drawImage(down.getImage(), 20, 50, 2000, 1800, this);
+		g2d.drawImage(left.getImage(), 60, 50, 2000, 1800, this);
+		g2d.drawImage(right.getImage(), 400, 150, 50, 50, this);
+		g2d.drawString("Let's get in the Grooooooove!", 500, 100);
+	
+		twoDgraph.drawImage(back, null, 0, 0);
+
+	}
+
+	
+
+
+
+	//DO NOT DELETE
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+//DO NOT DELETE
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+		key= e.getKeyCode();
+		System.out.println(key);
+		
+		
+		
+	
+	}
+
+
+	//DO NOT DELETE
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
+		
+		
+		
+	}
+	
+	
+	
+
+	
+}
